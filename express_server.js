@@ -39,17 +39,6 @@ app.get("/set", (req, res) => {
   res.send(`a = ${a}`);
 });
 
-// app.get("/urls/:shortURL", (req, res) => {
-//   const shortURL = req.params.shortURL;
-//   const url = urls[shortURL];
-
-//   let templateVars = {
-//     url
-//   };
-
-//   res.render("URLs", templateVars);
-// });
-
 
 app.get("/urls/:shortURL", (req, res) => {
   let templateVars = { shortURL: req.params.shortURL, longURL: req.params.longURL  };
