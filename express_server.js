@@ -54,9 +54,6 @@ app.get("/urls/new", (req, res) => {
   res.render("urls_new");
 });
 
-
-
-
 app.get("/urls/:shortURL", (req, res) => {
   let templateVars = {
     shortURL: req.params.shortURL,
