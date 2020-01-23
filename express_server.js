@@ -12,18 +12,7 @@ const emailFinder = function (inputEmail, users){
   }
 }
 
-const users = { 
-  "userRandomID": {
-    id: "userRandomID", 
-    email: "user@example.com", 
-    password: "purple-monkey-dinosaur"
-  },
- "user2RandomID": {
-    id: "user2RandomID", 
-    email: "user2@example.com", 
-    password: "dishwasher-funk"
-  }
-}
+const users = {}
 
 app.use(cookierParser());
 
@@ -67,17 +56,21 @@ app.get("/urls", (req, res) => {
 
 app.post("/urls", (req, res) => {
   let random = generateRandomString();
-  // console.log(random);
   urlDatabase[random] = req.body.longURL;
 
   res.redirect(`/urls/${random}`);
 });
 
 app.get("/urls/new", (req, res) => {
-  let templateVars = {
-    user: users[req.cookies.user_ID]
-  };
-  res.render("urls_new", templateVars);
+  if(Object.entries(req.cookies).length === 0){
+    res.redirect("/login")
+  }
+  else {
+    let templateVars = {
+      user: users[req.cookies.user_ID]
+    };
+    res.render("urls_new", templateVars)
+  }
 });
 
 
@@ -168,6 +161,8 @@ app.post("/urls/:shortURL/delete", (req, res) => {
 
 app.post("/urls/:shortURL", (req, res) => {
   urlDatabase[req.params.shortURL] = req.body.longURL;
+
+  /// 
   res.redirect("/urls");
 });
 
