@@ -4,24 +4,25 @@ const PORT = 8080; // default port 8080
 const bodyParser = require("body-parser");
 const cookierParser = require("cookie-parser");
 
-const keyfinder = function (existingEmail){ 
-  for(const property in users){
-    if( users[property].email === existingEmail){
-      return true
+const emailFinder = function (inputEmail, users){ 
+  for(const user in users){
+    if( users[user].email === inputEmail){
+      return users[user]
     }
   }
-  return false
 }
-// const validatepassword = function (user , correctpass) {
-//   for(const property in users) {
-//     if(users[property].password === correctpass){
-//       return true 
-//     }
-//     else {
-//       return false;
-//     }
-//   }
-// }    
+const validatepassword = function (user , correctpass) {
+  for(const user in users) {
+    if(users[user].email === user){
+      if(user[property].password === correctpass){
+        return true
+      }
+    }
+    else {
+      return false;
+    }
+  }
+}    
 
 const users = { 
   "userRandomID": {
@@ -108,10 +109,8 @@ app.post("/register", (req,res) => {
     res.statusCode = 400
     res.sendStatus(400)
   }
-  else if (keyfinder(email)){
-    res.statusCode = 400
-    res.sendStatus(400)
-
+  else if (emailFinder(email, users)){
+    res.redirect("/login")
   }
   else{
     users[id] = {
@@ -122,7 +121,6 @@ app.post("/register", (req,res) => {
     res.cookie('user_ID', id)
     res.redirect('/urls')
   }
-  res.redirect("/urls")
 })
 
 app.get("/login", (req,res) => {
@@ -136,7 +134,15 @@ app.get("/login", (req,res) => {
 
 //  const validateUser = (username, password) => usersDb.find(user => user.username === username && user.password === password);
 
-// app.post("/login", (req,res) =>{
+app.post("/login", (req,res) =>{
+  let user = emailFinder(req.body.email, users)
+  if(user && user.password === req.body.password){
+    res.cookie("user_ID", user.id)
+    res.redirect("/urls")
+  } else{
+    res.sendStatus(403)
+  }
+})
 //   if(keyfinder(req.body.email) === true && validatepassword(req.body.password) === true){
 //     res.cookie("user_ID", users[req.cookies.user_ID]);
 //     res.redirect("/urls");
@@ -146,7 +152,7 @@ app.get("/login", (req,res) => {
 //   }
 //   else( )
 
-// })
+
 
 app.get("/urls/:shortURL", (req, res) => {
   let templateVars = {
