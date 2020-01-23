@@ -11,18 +11,6 @@ const emailFinder = function (inputEmail, users){
     }
   }
 }
-const validatepassword = function (user , correctpass) {
-  for(const user in users) {
-    if(users[user].email === user){
-      if(user[property].password === correctpass){
-        return true
-      }
-    }
-    else {
-      return false;
-    }
-  }
-}    
 
 const users = { 
   "userRandomID": {
@@ -95,8 +83,12 @@ app.get("/urls/new", (req, res) => {
 
 app.get("/register", (req,res) => {
   let templateVars = { urls: urlDatabase, user: users[req.cookies.user_ID] };
-  // console.log(templateVars);
+  // if(req.body.email === users[req.cookies.user_ID]){
+  //   res.redirect("/login")
+  // }
+  // else{
   res.render("urls_registration", templateVars)
+
 })
 
 app.post("/register", (req,res) => {
@@ -109,7 +101,7 @@ app.post("/register", (req,res) => {
     res.statusCode = 400
     res.sendStatus(400)
   }
-  else if (emailFinder(email, users)){
+  else if (emailFinder(req.body.email, users)){
     res.redirect("/login")
   }
   else{
@@ -140,7 +132,7 @@ app.post("/login", (req,res) =>{
     res.cookie("user_ID", user.id)
     res.redirect("/urls")
   } else{
-    res.sendStatus(403)
+    res.status(403).send("wrong password , please try again")
   }
 })
 //   if(keyfinder(req.body.email) === true && validatepassword(req.body.password) === true){
