@@ -4,23 +4,17 @@ TinyApp is a full stack web application built with Node and Express that allows 
 
 ## Final Product
 
-!["Registration page"](#)
-https://github.com/flave19/TinyApp/blob/master/docs/Registration.png
+!["Registration page"](https://github.com/flave19/TinyApp/blob/master/docs/Registration.png)
 
-!["urls screen after login and URL creation"](#)
-https://github.com/flave19/TinyApp/blob/master/docs/URLs-logged-in.png
+!["urls screen after login and URL creation"](https://github.com/flave19/TinyApp/blob/master/docs/URLs-logged-in.png)
 
-!["Create new URL page"](#)
-https://github.com/flave19/TinyApp/blob/master/docs/Urls%20New.png
+!["Create new URL page"](https://github.com/flave19/TinyApp/blob/master/docs/Urls%20New.png)
 
-!["Login Page"](#)
-https://github.com/flave19/TinyApp/blob/master/docs/login.png
+!["Login Page"](https://github.com/flave19/TinyApp/blob/master/docs/login.png)
 
-!["URL Update page"](#)
-https://github.com/flave19/TinyApp/blob/master/docs/update-URL.png
+!["URL Update page"](https://github.com/flave19/TinyApp/blob/master/docs/update-URL.png)
 
-!["Launch page before login"](#)
-https://github.com/flave19/TinyApp/blob/master/docs/urls-main-launch-page.png
+!["Launch page before login"](https://github.com/flave19/TinyApp/blob/master/docs/urls-main-launch-page.png)
 
 ## Dependencies
 
