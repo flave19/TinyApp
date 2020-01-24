@@ -5,16 +5,16 @@ TinyApp is a full stack web application built with Node and Express that allows 
 ## Final Product
 
 !["Registration page"](#)
-https://github.com/flave19/TinyApp/blob/master/Screenshots/Registration.png 
+https://github.com/flave19/TinyApp/blob/master/docs/Registration.png
 
 !["urls screen after login and URL creation"](#)
-https://github.com/flave19/TinyApp/blob/master/Screenshots/URLs%20logged%20in.png
+https://github.com/flave19/TinyApp/blob/master/docs/URLs-logged-in.png
 
 !["Create new URL page"](#)
-https://github.com/flave19/TinyApp/blob/master/Screenshots/Urls%20New.png
+https://github.com/flave19/TinyApp/blob/master/docs/Urls%20New.png
 
 !["Login Page"](#)
-https://github.com/flave19/TinyApp/blob/master/Screenshots/login.png
+https://github.com/flave19/TinyApp/blob/master/docs/login.png
 
 !["URL Update page"](#)
 https://github.com/flave19/TinyApp/blob/master/Screenshots/short%20URL.png
