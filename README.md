@@ -17,10 +17,11 @@ https://github.com/flave19/TinyApp/blob/master/docs/Urls%20New.png
 https://github.com/flave19/TinyApp/blob/master/docs/login.png
 
 !["URL Update page"](#)
-https://github.com/flave19/TinyApp/blob/master/Screenshots/short%20URL.png
+https://github.com/flave19/TinyApp/blob/master/docs/update-URL.png
 
 !["Launch page before login"](#)
-https://github.com/flave19/TinyApp/blob/master/Screenshots/urls%20main.png
+https://github.com/flave19/TinyApp/blob/master/docs/urls-main-launch-page.png
+
 ## Dependencies
 
 - Node.js
