@@ -44,7 +44,6 @@ app.get("/urls.json", (req, res) => {
 });
 
 app.get("/hello", (req, res) => {
-  console.log("hello");
   res.send("<html><body>Hello <b>World</b></body></html>\n");
 });
 
@@ -53,7 +52,6 @@ app.get("/urls", (req, res) => {
     let newdatabase = matchUsersUrls(req.session.user_ID, urlDatabase)
     let templateVars = { urls: newdatabase, user: userdatabase[req.session.user_ID] };
     res.render("urls_index", templateVars);
-    console.log(urlDatabase)
   }
   else{
     res.redirect("/login")
@@ -61,7 +59,7 @@ app.get("/urls", (req, res) => {
 });
 
 app.get("/urls/new", (req, res) => {
-  if(Object.entries(req.session).length === 0){
+  if(!req.session.user_ID){
     res.redirect("/login")
   }
   else {
@@ -114,13 +112,13 @@ app.post("/register", (req,res) => {
   let id = generateRandomString();
   const email = req.body["email"]
   const password = bcrypt.hashSync (req.body["password"], 10)
+  let user = getUserByEmail(req.body.email, userdatabase)
 
-  if(email === '' || password === ''){
-    res.statusCode = 400
-    res.sendStatus(400)
+  if(!email || !req.body.password){
+    res.send('Must provide email and password')
   }
-  else if (getUserByEmail(req.body.email, userdatabase)){
-    res.redirect("/login")
+  else if(user){
+    res.send("User already exists, please login")
   }
   else{
     userdatabase[id] = {
@@ -165,6 +163,4 @@ app.post("/logout", (req,res) => {
   res.redirect("/urls")
 })
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}!`);
-});
+app.listen(PORT);
